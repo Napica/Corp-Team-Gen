@@ -33,26 +33,28 @@ const render = require("./lib/htmlRenderer");
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
+const questions = [managerQuestions, engineerQuestions, internQuestions];
+
 const managerQuestions = [
   {
     type: "input",
     message: "What is your manager's name?",
-    name: "managerName",
+    name: "name",
   },
   {
     type: "input",
     message: "What is your manager's ID#?",
-    name: "managerID",
+    name: "ID",
   },
   {
     type: "input",
     message: "What is your manager's email?",
-    name: "managerEmail",
+    name: "email",
   },
   {
     type: "input",
     message: "What is your manager's office number?",
-    name: "managerNumber",
+    name: "number",
   },
 ];
 
@@ -60,22 +62,22 @@ const engineerQuestions = [
   {
     type: "input",
     message: " What is your engineer's name?",
-    name: "engineerName",
+    name: "name",
   },
   {
     type: "input",
     message: "What is your engineer's ID#?",
-    name: "engineerID",
+    name: "ID",
   },
   {
     type: "input",
     message: "What is your engineer's email?",
-    name: "engineerEmail",
+    name: "email",
   },
   {
     type: "input",
     message: "What is your engineer's GitHub username?",
-    name: "engineerGitHub",
+    name: "gitHub",
   },
 ];
 
@@ -83,21 +85,33 @@ const internQuestions = [
   {
     type: "input",
     message: "What is your intern's name?",
-    name: "internName",
+    name: "name",
   },
   {
     type: "input",
     message: "What is your intern's ID #?",
-    name: "internID",
+    name: "ID",
   },
   {
     type: "input",
     message: "What is your intern's email?",
-    name: "internEmail",
+    name: "email",
   },
   {
     type: "input",
     message: "What is your intern's school?",
-    name: "internSchool",
+    name: "school",
   },
 ];
+
+
+
+// function to start prompt
+
+// function init() {
+//   inquirer.prompt(questions).then(function (data) {
+//     console.log(data);
+//   });
+// }
+
+// init();
