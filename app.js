@@ -193,7 +193,7 @@ function managerQ() {
 // Engineer Class
 function engineerQ() {
   inquirer.prompt(engineerQuestions).then(function (data) {
-    var newEngineer = new Engineer(data.name, data.ID, data.email, data.number);
+    var newEngineer = new Engineer(data.name, data.ID, data.email, data.gitHub);
     team.push(newEngineer);
     addToTeam();
   });
@@ -202,7 +202,7 @@ function engineerQ() {
 // Intern Class
 function internQ() {
   inquirer.prompt(internQuestions).then(function (data) {
-    var newIntern = new Intern(data.name, data.ID, data.email, data.number);
+    var newIntern = new Intern(data.name, data.ID, data.email, data.school);
     team.push(newIntern);
     addToTeam();
   });
