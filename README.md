@@ -75,28 +75,28 @@ Please click on the link below to see a demonstration of the project:
   
 <br/>
 
-![itemLinks](./assets/images/readmeimage5.png)
+![itemLinks](./Assets/images/readmeimage5.png)
 
 <br/>
 
-#### When the command above is ran, the user will be given a series of prompts and choices below.  Please fill out these sections to generate the reademe file. An example is given below.  Once it is generated, "success" will be at the bottom of the command line.  
+#### When the command above is ran, the user will be given a series of prompts and choices below.  Please fill out these sections to generate the team file. An example is given below.  Once it is generated, "success" will be at the bottom of the command line.  
 ##### *note: please have a folder called "output" for the team.html file to be generated in.
 
 <br/>
 
-![itemLinks](./assets/images/readmeimage1.png)
+![itemLinks](./Assets/images/readmeimage1.png)
 
 <br/>
 
 #### Once the prompts are complete and the request to generate the file is done, you can find the file in the output folder
 
-![itemLinks](./assets/images/readmeimage2.png)
+![itemLinks](./Assets/images/readmeimage2.png)
 
 <br/>
 
 #### The final result will look like the image below:
 
-![itemLinks](./assets/images/readmeimage3.png)
+![itemLinks](./Assets/images/readmeimage3.png)
 
 <br/>
 
