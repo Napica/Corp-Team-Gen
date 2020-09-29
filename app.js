@@ -208,6 +208,7 @@ function internQ() {
   });
 }
 
+// Function to initialize Node
 
 function init() {
   console.log("Please generate your team below:");
@@ -216,8 +217,10 @@ function init() {
 
 init();
 
+// Function to end the function and create the dynamically generated website
+
 function end() {
-  fs.writeFile("team.html", render(team), function (err) {
+  fs.writeFile(outputPath, render(team), function (err) {
     if (err) {
       console.log(err);
     }
