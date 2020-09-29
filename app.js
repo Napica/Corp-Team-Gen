@@ -43,11 +43,13 @@ const questionsPrompt = [
   },
 ];
 
-const anotherMember = [{
-  type:"confirm",
-  message:"Would you like to add another member?",
-  name:"anotherMember"
-}]
+const anotherMember = [
+  {
+    type: "confirm",
+    message: "Would you like to add another member?",
+    name: "anotherMember",
+  },
+];
 
 const typeOfTeamMember = [
   {
@@ -127,7 +129,7 @@ const internQuestions = [
   },
 ];
 
-// function to start the quesitons
+// function to start the initial quesitons
 
 function questions() {
   inquirer
@@ -144,15 +146,17 @@ function questions() {
     });
 }
 
-// function to as to what type of member the user can choose from
+// function to add team members
 
-function memberType() {
+function addToTeam() {
   inquirer
-    .prompt(typeOfTeamMember)
+    .prompt(anotherMember)
     .then(function (data) {
       // console.log(data)
-      if (data.typeOfMember === "Manager"){
-        managerQ()
+      if (data.anotherMember === true) {
+        memberType();
+      } else {
+        end();
       }
     })
     .catch((err) => {
@@ -160,31 +164,47 @@ function memberType() {
     });
 }
 
+// function to as to what type of member the user can choose from
+
+function memberType() {
+  inquirer
+    .prompt(typeOfTeamMember)
+    .then(function (data) {
+      // console.log(data)
+      if (data.typeOfMember === "Manager") {
+        managerQ();
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 // functions for specificmember type:
 
 function managerQ() {
   inquirer.prompt(managerQuestions).then(function (data) {
     // console.log(data)
-    var newManager = new Manager(
-      data.name,
-      data.ID,
-      data.email,
-      data.number
-    );
-    console.log(newManager);
-    // team.push(newManager);
+    var newManager = new Manager(data.name, data.ID, data.email, data.number);
+    // console.log(newManager);
+    team.push(newManager);
+    addToTeam();
   });
 }
 
-
-
 function init() {
+  console.log("Please generate your team below:");
   questions();
+  // console.log(team);
 }
 
 init();
 
 function end() {
-  fs.writeFile("team.html", render(team), "utf8");
+  fs.writeFile("team.html", render(team), function (err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Success");
+  });
 }
