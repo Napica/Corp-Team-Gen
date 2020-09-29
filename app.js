@@ -33,7 +33,30 @@ const render = require("./lib/htmlRenderer");
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
-const questions = [managerQuestions, engineerQuestions, internQuestions];
+const team = [];
+
+const questionsPrompt = [
+  {
+    type: "confirm",
+    message: "Would you like to add a team member?",
+    name: "startQuestion",
+  },
+];
+
+const anotherMember = [{
+  type:"confirm",
+  message:"Would you like to add another member?",
+  name:"anotherMember"
+}]
+
+const typeOfTeamMember = [
+  {
+    type: "list",
+    message: "Please select which kind of member you would like to add:",
+    choices: ["Manager", "Engineer", "Intern"],
+    name: "typeOfMember",
+  },
+];
 
 const managerQuestions = [
   {
@@ -104,14 +127,64 @@ const internQuestions = [
   },
 ];
 
+// function to start the quesitons
+
+function questions() {
+  inquirer
+    .prompt(questionsPrompt)
+    .then(function (data) {
+      // console.log(data);
+      if (data.startQuestion === true) {
+        // console.log("this worked")
+        memberType();
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// function to as to what type of member the user can choose from
+
+function memberType() {
+  inquirer
+    .prompt(typeOfTeamMember)
+    .then(function (data) {
+      // console.log(data)
+      if (data.typeOfMember === "Manager"){
+        managerQ()
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 
-// function to start prompt
+// functions for specificmember type:
 
-// function init() {
-//   inquirer.prompt(questions).then(function (data) {
-//     console.log(data);
-//   });
-// }
+function managerQ() {
+  inquirer.prompt(managerQuestions).then(function (data) {
+    // console.log(data)
+    var newManager = new Manager(
+      data.name,
+      data.ID,
+      data.email,
+      data.number
+    );
+    console.log(newManager);
+    // team.push(newManager);
+  });
+}
 
-// init();
+
+
+function init() {
+  questions();
+}
+
+init();
+
+function end() {
+  fs.writeFile("team.html", render(team), "utf8");
+}
