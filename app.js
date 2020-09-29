@@ -137,6 +137,9 @@ function questions() {
     .then(function (data) {
       if (data.startQuestion === true) {
         memberType();
+      } else {
+        console.log("There are no members on your team. Please run node again if you would like to add members to your team.")
+        end()
       }
     })
     .catch((err) => {
