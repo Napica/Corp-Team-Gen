@@ -138,8 +138,10 @@ function questions() {
       if (data.startQuestion === true) {
         memberType();
       } else {
-        console.log("There are no members on your team. Please run node again if you would like to add members to your team.")
-        end()
+        console.log(
+          "There are no members on your team. Please run node again if you would like to add members to your team."
+        );
+        end();
       }
     })
     .catch((err) => {
@@ -173,9 +175,9 @@ function memberType() {
       if (data.typeOfMember === "Manager") {
         managerQ();
       } else if (data.typeOfMember === "Engineer") {
-        engineerQ()
+        engineerQ();
       } else if (data.typeOfMember === "Intern") {
-        internQ()
+        internQ();
       }
     })
     .catch((err) => {
@@ -223,6 +225,9 @@ init();
 // Function to end the function and create the dynamically generated website
 
 function end() {
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+  }
   fs.writeFile(outputPath, render(team), function (err) {
     if (err) {
       console.log(err);
